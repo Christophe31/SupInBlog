@@ -21,8 +21,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class UserAccount implements Serializable {
-    @OneToMany(mappedBy = "author")
-    private List<Comment> comments;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,9 +30,13 @@ public class UserAccount implements Serializable {
     private String userName;
     private String password;
     private String email;
-    
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateOfBirth;
+    
+    @OneToMany(mappedBy = "author")
+    private List<Post> posts;
+    @OneToMany(mappedBy = "author")
+    private List<Comment> comments;
     
     @Override
     public String toString() {
@@ -72,6 +75,24 @@ public class UserAccount implements Serializable {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+    
+       
 
     public Long getId() {
         return id;
