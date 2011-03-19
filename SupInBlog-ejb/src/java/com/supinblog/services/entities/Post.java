@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -38,6 +39,8 @@ public class Post implements Serializable {
     private UserAccount author;
     @OneToMany(mappedBy = "post")
     private List<Comment> comments;
+    @ManyToMany(mappedBy = "posts")
+    private List<Tag> tags;
     
     @Override
     public String toString() {
@@ -66,6 +69,14 @@ public class Post implements Serializable {
 
     public void setAuthor(UserAccount author) {
         this.author = author;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 
     public List<Comment> getComments() {
