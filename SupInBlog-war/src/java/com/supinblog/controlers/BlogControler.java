@@ -17,20 +17,8 @@ import javax.enterprise.context.Dependent;
 @Named(value="blogControler")
 @Dependent
 public class BlogControler {
-    private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    
     /** Creates a new instance of BlogControler */
     public BlogControler() {
-        this.name="plop";
     }
 
 }

@@ -12,6 +12,7 @@ import com.supinblog.services.entities.UserAccount;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 /**
@@ -22,6 +23,18 @@ import javax.persistence.PersistenceContext;
 public class BlogService implements BlogServiceLocal {
     @PersistenceContext(unitName="SupInBlog-ejbPU")
     private EntityManager entities;
+    
+    @Override
+    public UserAccount getAuthenticatedUser(String name, String password) {
+        try{
+            return (UserAccount) entities.createNamedQuery("UserAccount.auth")
+                    .setParameter("name", name)
+                    .setParameter("pwd", password)
+                    .getSingleResult();
+        }catch(NoResultException e) {
+            return null;}
+    }
+    
     @Override
     public List<Comment> getPostComments(long postId) {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -29,5 +42,7 @@ public class BlogService implements BlogServiceLocal {
     
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+
  
 }

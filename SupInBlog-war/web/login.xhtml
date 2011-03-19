@@ -8,13 +8,14 @@ and open the template in the editor.
       xmlns:f="http://java.sun.com/jsf/core"      
       xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
-        <title>SupInBlog  #{identityControler.name}</title>
+        <title>SupInBlog  Log In</title>
     </h:head>
     <h:body>
         <div>
             <h:form>
-                <h:inputText value="#{identityControler.name}" />
-                <h:commandButton value="Welcome Me" action="blog" />
+                <h:inputText required="true" value="#{identityControler.name}" />
+                <h:inputSecret required="true" value="#{identityControler.password}" />
+                <h:commandButton value="Welcome Me" action="#{identityControler.auth}" />
             </h:form>
         </div>
     </h:body>

@@ -20,5 +20,6 @@ import javax.ejb.Local;
  */
 @Local
 public interface BlogServiceLocal {
+    public UserAccount getAuthenticatedUser(String name, String password);
     public List<Comment> getPostComments(long postId);    
 }
