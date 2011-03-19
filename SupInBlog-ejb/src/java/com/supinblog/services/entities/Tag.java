@@ -7,17 +7,21 @@ package com.supinblog.services.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author popi
  */
 @Entity
+@Table(name="CATEGORIES")
 public class Tag implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -27,7 +31,8 @@ public class Tag implements Serializable {
     private String name;
     private String description;
     
-    @ManyToMany
+    @ManyToMany(cascade={CascadeType.ALL})
+    @JoinTable(name="POSTS_CATEGORIES")
     private List<Post> posts;
     
     @Override
