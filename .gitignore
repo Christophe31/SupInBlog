@@ -1,3 +1,9 @@
 /SupInBlog-ejb/nbproject/private/
 /SupInBlog-war/nbproject/private/
 /nbproject/private/
+/SupInBlog-ejb/build/
+/build/
+/dist/
+/SupInBlog-war/dist/
+/SupInBlog-war/build/
+/SupInBlog-ejb/dist/

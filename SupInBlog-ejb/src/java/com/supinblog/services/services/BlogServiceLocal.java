@@ -20,5 +20,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface BlogServiceLocal {
-    public List<Comment> getPostComments(long postId);
+    public List<Comment> getPostComments(long postId);    
 }
