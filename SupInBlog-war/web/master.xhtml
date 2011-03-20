@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title><ui:insert name="title">SupInBlog</ui:insert></title>
+        <ui:insert name="extra_meta" />
+        <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    </h:head>
+    <h:body>
+    <div id="wrap">
+    <div id="container">
+        <div id="header">
+		<h1><a href="/">SupInBlog</a></h1>
+		<h2>Le blog de l'info</h2>
+        </div>
+        <div id="nav">
+	    <ul>
+                <li><a href="index.xhtml" class="selected" title="home page">home</a></li>
+                <li><h:link value="Blog" outcome="blog" title=""/></li>
+                <li><h:link value="Login" outcome="login" title=""/></li>
+                <li><h:link value="Register" outcome="register" title=""/></li>
+            </ul>
+            <br class="clear" />
+	</div>
+        <div id="content">
+            <div class="top-panel">
+                <div>
+                <h3><ui:insert name="title">SupInBlog</ui:insert></h3>
+                <p><ui:insert name="description">SUPINFO International University is the new international title of the Paris Institute of Information Technology (ESI), which became "SUPINFO" over 5 years ago. Founded in 1965 and recognized by the State in 1972, the Institute of Information Technology of SUPINFO International University is from now on called "SUPINFO Institute of Information Technology". The school, initially only French, delivers a qualification certified by the French State at the highest level, I (level: Bac+5, Engineer, Master). Today, the SUPINFO Institute of Information Technology is a worldwide IT school, leader in France, which can be found on many SUPINFO International University campuses throughout the world (France, Canada, the United Kingdom, Morocco, the United States, China, etc.).</ui:insert><br /><br />
+                        <a href="http://supinfo.com/" class="linkleft">Supinfo</a> <b>|</b> <a href="http://www.campus-booster.net/">Campus Booster</a>
+                </p>
+                </div>
+            </div>
+            <div class="page-wrap">
+                <div class="page">
+                <h:form>
+                    <ui:insert name="content">
+                        <h1>Anything is possible at zombocom.</h1>
+                        <h1>Hello <h:outputText value="#{identityControler.user.userName}"/></h1>
+                    </ui:insert>
+                </h:form>
+                </div>
+                <div class="sidebar">
+                <ui:insert name="sidebar">
+                </ui:insert>
+                <h4>Links</h4>
+                <ul>
+                        <li><a href="http://www.supinfo.com">supinfo</a></li>
+                        <li><a href="http://github.com/christophe31/SupInBlog/">SupInBlog</a></li>
+                        <li><a href="http://blogs.dotnet-france.com/christophen/">Webmaster</a></li>
+                        <li><a href="http://twitter.com/Christophe31">Twitter news</a></li>
+                </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div id="footer"><p>Based on <a href="http://github.com/christophe31/SupInBlog/">Supinblog</a> | Design: <a href="http://www.spyka.net">spyka webmaster</a></p></div>
+    </div>
+    </div>
+    </h:body>
+</html>
+
