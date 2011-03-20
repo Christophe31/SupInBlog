@@ -1,35 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"      
-      xmlns:h="http://java.sun.com/jsf/html">
-    <head>
-        <title>Register</title>
-    </head>
-    <body>
-        <h:form>
-            <table>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"      
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="master.xhtml">
+    <ui:define name="title">Register</ui:define>
+    <ui:define name="description">Cette page est une page facultative destinée à ajouter un utilisateur. Les champs de ce formulaire n'ont pas de soin de contrôle particulier, merci de créer votre compte avant de pouvoir vous loguer.</ui:define>
+    <ui:define name="content">
+        <table>
                 <tr>
-                    <td>nom</td>
+                    <th>nom:</th>
                     <td><h:inputText value="#{identityControler.newUser.userName}"/></td>
                 </tr>
                 <tr>
-                    <td>email</td>
+                    <th>email:</th>
                     <td><h:inputText value="#{identityControler.newUser.email}" /></td>
                 </tr>
                 <tr>
-                    <td>birthdate</td>
+                    <th>birthdate:</th>
                     <td><h:inputText value="#{identityControler.newUser.dateOfBirth}">
                             <f:convertDateTime pattern="dd/MM/yy" />
                         </h:inputText>
                     </td>
                 </tr>
                 <tr>
-                    <td>password</td>
+                    <th>password:</th>
                     <td><h:inputSecret value="#{identityControler.newUser.password}"/></td>
                 </tr>
                 <tr>
@@ -37,6 +31,12 @@ and open the template in the editor.
                     <td><h:commandButton action="#{identityControler.addUser}" value="register" /></td>
                 </tr>
             </table>
-        </h:form>
-    </body>
-</html>
+    </ui:define>
+    <ui:define name="sidebar">
+        <h4>Déjà un compte?</h4>
+        <ul><li>
+        <h:link value="Log In" outcome="login"/>
+        </li></ul>
+    </ui:define>
+
+</ui:composition>
