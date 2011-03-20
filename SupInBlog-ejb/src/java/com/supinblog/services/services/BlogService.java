@@ -48,6 +48,11 @@ public class BlogService implements BlogServiceLocal {
         entities.persist(newUser);
     }
 
+    @Override
+    public List<Post> getPosts() {
+        return (List<Post>)entities.createNamedQuery("Post.all").getResultList();
+    }
+
 
  
 }
