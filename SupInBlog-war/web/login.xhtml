@@ -1,22 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"      
-      xmlns:h="http://java.sun.com/jsf/html">
-    <h:head>
-        <title>SupInBlog  Log In</title>
-    </h:head>
-    <h:body>
-        <div>
-            <h:form>
-                <h:inputText required="true" value="#{identityControler.name}" />
-                <h:inputSecret required="true" value="#{identityControler.password}" />
-                <h:commandButton value="Log In" action="#{identityControler.auth}" />
-            </h:form>
-        </div>
-    </h:body>
-</html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"      
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="master.xhtml">
+    <ui:define name="title">LogIn</ui:define>
+    <ui:define name="description">Cette page est une page obligatoire destinée à authentifier un utilisateur. Les champs de ce formulaire n'ont pas de soin de contrôle particulier, lors de la validation, l'utilisateur en base de donnée est ajouter à votre session pour permettre à l'application web d'être user-aware..</ui:define>
+    <ui:define name="content">
+        <formset><legend>Login</legend>
+            <table class="form">
+                <tr><th>Pseudonyme:</th><td><h:inputText required="true" value="#{identityControler.name}" /></td></tr>
+                <tr><th>Mot de passe:</th><td><h:inputSecret required="true" value="#{identityControler.password}" /></td></tr>
+                <tr><td></td><td><h:commandButton value="Log In" action="#{identityControler.auth}" /></td></tr>
+            </table>
+        </formset>
+    </ui:define>
+    <ui:define name="sidebar">
+        <h4>Pas de compte?</h4>
+        <ul><li>
+        <h:link value="Register" outcome="register"/>
+        </li></ul>
+    </ui:define>
+</ui:composition>

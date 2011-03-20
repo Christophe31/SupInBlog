@@ -1,21 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"      
-      xmlns:h="http://java.sun.com/jsf/html">
-    <h:head>
-        <title>SupInBlog  #{identityControler.name}</title>
-    </h:head>
-    <h:body>
-        <div>
-            <h:form>
-                <h:inputText value="#{identityControler.name}" />
-                <h:commandButton value="Welcome Me" action="blog" />
-            </h:form>
-        </div>
-    </h:body>
-</html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"      
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="master.xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <ui:define name="title">Le Blog</ui:define>
+    <ui:define name="description">Cette page liste l'ensemble des posts du blog, elle est donc la page essentielle, grace à cette page, il est possible de lire le contenu du blog en temps réel et d'avoir les liens de modification.</ui:define>
+    <ui:define name="content">
+        <ui:repeat value="#{blogControler.allPosts}" var="post">
+            <div>
+                <h1><h:outputText value="#{post.title}" /></h1>
+                <h5><h:outputText value="#{post.creationDate}" /></h5>
+                <p><h:outputText value="#{post.content}"/></p>
+            </div>
+        </ui:repeat>
+    </ui:define>
+    <ui:define name="sidebar">
+        <h4>Pas de compte?</h4>
+        <ul><li>
+        <h:link value="Register" outcome="register"/>
+        </li></ul>
+    </ui:define>
+</ui:composition>
