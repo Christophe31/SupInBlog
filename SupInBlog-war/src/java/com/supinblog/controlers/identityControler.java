@@ -21,16 +21,22 @@ import javax.faces.bean.ManagedBean;
 @Named(value="identityControler")
 @SessionScoped
 public class identityControler implements Serializable{
-    private String name;
-    private String password;
-    private UserAccount user;
+    private String name;         // name used to auth
+    private String password;     // password used to auth
+    private UserAccount user;    // curent User if auth.
+    private UserAccount newUser; // tmp User used to register.
+
     
     @EJB
-    private BlogServiceLocal serv;
+    private BlogServiceLocal serv;// link to entities service.
     
     public String auth(){
         user= serv.getAuthenticatedUser(name, password);
         return user==null?"login":"index";
+    }
+    public String addUser(){
+        serv.addUser(this.newUser);
+        return "login";
     }
     /** Creates a new instance of identityControler */
     public identityControler() {
@@ -45,6 +51,19 @@ public class identityControler implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public UserAccount getNewUser() {
+        if(this.newUser==null)
+            this.newUser = new UserAccount();
+        return newUser;
+    }
+
+    public void setNewUser(UserAccount newUser) {
+        if(this.newUser==null)
+            this.newUser = new UserAccount();
+        this.newUser = newUser;
+    }
+
 
     public String getName() {
         return name;

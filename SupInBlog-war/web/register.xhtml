@@ -15,20 +15,28 @@ and open the template in the editor.
             <table>
                 <tr>
                     <td>nom</td>
-                    <td><h:inputText /></td>
+                    <td><h:inputText value="#{identityControler.newUser.userName}"/></td>
                 </tr>
                 <tr>
-                    <td>prenom</td>
-                    <td><h:inputText /></td>
+                    <td>email</td>
+                    <td><h:inputText value="#{identityControler.newUser.email}" /></td>
                 </tr>
                 <tr>
                     <td>birthdate</td>
-                    <td><f:convertDateTime /></td>
+                    <td><h:inputText value="#{identityControler.newUser.dateOfBirth}">
+                            <f:convertDateTime pattern="dd/MM/yy" />
+                        </h:inputText>
+                    </td>
                 </tr>
                 <tr>
                     <td>password</td>
-                    <td><h:inputSecret /></td>
+                    <td><h:inputSecret value="#{identityControler.newUser.password}"/></td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td><h:commandButton action="#{identityControler.addUser}" value="register" /></td>
+                </tr>
+            </table>
         </h:form>
     </body>
 </html>

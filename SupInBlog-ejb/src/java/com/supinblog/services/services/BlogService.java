@@ -43,6 +43,11 @@ public class BlogService implements BlogServiceLocal {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
+    @Override
+    public void addUser(UserAccount newUser) {
+        entities.persist(newUser);
+    }
+
 
  
 }
