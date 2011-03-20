@@ -25,6 +25,11 @@ public class identityControler implements Serializable{
     private String password;     // password used to auth
     private UserAccount user;    // curent User if auth.
     private UserAccount newUser; // tmp User used to register.
+    
+    public String getResetUser(){
+        this.user=null;
+        return "vous avez été déconnecté";
+    }
 
     
     @EJB
