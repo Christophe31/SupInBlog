@@ -9,26 +9,26 @@
         <table>
                 <tr>
                     <th>nom:</th>
-                    <td><h:inputText value="#{identityControler.newUser.userName}"/></td>
+                    <td><h:inputText value="#{blogControler.newUser.userName}"/></td>
                 </tr>
                 <tr>
                     <th>email:</th>
-                    <td><h:inputText value="#{identityControler.newUser.email}" /></td>
+                    <td><h:inputText value="#{blogControler.newUser.email}" /></td>
                 </tr>
                 <tr>
                     <th>birthdate:</th>
-                    <td><h:inputText value="#{identityControler.newUser.dateOfBirth}">
+                    <td><h:inputText value="#{blogControler.newUser.dateOfBirth}">
                             <f:convertDateTime pattern="dd/MM/yy" />
                         </h:inputText>
                     </td>
                 </tr>
                 <tr>
                     <th>password:</th>
-                    <td><h:inputSecret value="#{identityControler.newUser.password}"/></td>
+                    <td><h:inputSecret value="#{blogControler.newUser.password}"/></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td><h:commandButton action="#{identityControler.addUser}" value="register" /></td>
+                    <td><h:commandButton action="#{blogControler.addUser}" value="register" /></td>
                 </tr>
             </table>
     </ui:define>

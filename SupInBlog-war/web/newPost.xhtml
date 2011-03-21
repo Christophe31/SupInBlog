@@ -24,7 +24,6 @@
                     </h:selectManyCheckbox>
                 </td>
             </tr>
-            <c:set var="#{blogControler.newPost.author}" value="#{identityControler.user}"/>
             <tr>
                 <td></td>
                 <td><h:commandButton value="Poster l'article" action="#{blogControler.savePost}"/></td>

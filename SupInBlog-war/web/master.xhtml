@@ -14,7 +14,7 @@
     <div id="container">
         <div id="header">
 		<h1><a href="/">SupInBlog</a></h1><br/>
-		<h2>Le blog de l'info<c:if test="#{identityControler.user!=null}">, lue par <h:outputText value="#{identityControler.user.userName}"/></c:if></h2>
+		<h2>Le blog de l'info<c:if test="#{blogControler.user!=null}">, lue par <h:outputText value="#{blogControler.user.userName}"/></c:if></h2>
         </div>
         <h:form>
         <div id="nav">
@@ -22,14 +22,14 @@
                 <li><a href="index.xhtml" class="selected" title="home page">home</a></li>
                 <li><h:link value="Blog" outcome="blog" title="blog"/></li>
                 <c:choose>
-                    <c:when test="#{identityControler.user==null}">
+                    <c:when test="#{blogControler.user==null}">
                         <li><h:link value="Login" outcome="login" title="login page"/></li>
                         <li><h:link value="Register" outcome="register" title=""/></li>
                     </c:when>
                     <c:otherwise>
                         <li><h:link value="Add Post" outcome="newPost" title="add post page"/></li>
                         <li><h:link value="Add Tag" outcome="newTag" title="add tag page"/></li>
-                        <li><h:commandLink value="Logout" action="#{identityControler.resetUser}" title="logout page"/></li>
+                        <li><h:commandLink value="Logout" action="#{blogControler.resetUser}" title="logout page"/></li>
                     </c:otherwise>
                 </c:choose>
             </ul>
@@ -50,7 +50,7 @@
                 
                     <ui:insert name="content">
                         <h1>Anything is possible at zombocom.</h1>
-                        <h1>Hello <h:outputText value="#{identityControler.user.userName}"/></h1>
+                        <h1>Hello <h:outputText value="#{blogControler.user.userName}"/></h1>
                     </ui:insert>
                 
                 </div>
@@ -63,13 +63,16 @@
                         <li><a href="http://github.com/christophe31/SupInBlog/">SupInBlog</a></li>
                         <li><a href="http://blogs.dotnet-france.com/christophen/">Webmaster</a></li>
                         <li><a href="http://twitter.com/Christophe31">Twitter news</a></li>
+                        <li><script type="text/javascript" src="http://www.ohloh.net/p/488781/widgets/project_partner_badge.js"></script></li>
                 </ul>
                 </div>
                 <div class="clear"></div>
             </div>
         </div>
         </h:form>
-        <div id="footer"><p>Based on <a href="http://github.com/christophe31/SupInBlog/">Supinblog</a> | Design: <a href="http://www.spyka.net">spyka webmaster</a></p></div>
+        <div id="footer" ><p class="left">Based on <a href="http://github.com/christophe31/SupInBlog/">Supinblog</a> 
+            | Design: <a href="http://www.spyka.net">spyka webmaster</a></p></div>
+        
     </div>
     </div>
     </h:body>

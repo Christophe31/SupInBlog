@@ -7,6 +7,7 @@ package com.supinblog.controlers;
 
 import com.supinblog.services.entities.Post;
 import com.supinblog.services.entities.Tag;
+import com.supinblog.services.entities.UserAccount;
 import com.supinblog.services.services.BlogServiceLocal;
 import java.io.Serializable;
 import java.util.Date;
@@ -25,20 +26,37 @@ import javax.inject.Named;
 @SessionScoped
 public class BlogControler implements Serializable {
     @EJB
-    private BlogServiceLocal serv;
+    private BlogServiceLocal serv;// link to entities service.
 
+    private String name;         // name used to auth
+    private String password;     // password used to auth
+    private UserAccount user;    // curent User if auth.
+    private UserAccount newUser; // tmp User used to register.
     private Tag newTag;
     private Post newPost;
+    
+    public String resetUser(){
+        this.user=null;
+        return "index";
+    }
+    
+    public String auth(){
+        user= serv.getAuthenticatedUser(name, password);
+        return user==null?"login":"index";
+    }
+    public String addUser(){
+        serv.addUser(this.newUser);
+        return "login";
+    }
 
     public BlogServiceLocal getServ() {
         return serv;
     }
     
-    
-
     public List<Post> getAllPosts() {
         return serv.getPosts();
     }
+    
     public List<Tag> getAllTags() {
         return serv.getTags();
     }
@@ -47,6 +65,7 @@ public class BlogControler implements Serializable {
         if (newPost.getId() != null && newPost.getId() != 0) {
            serv.updatePost(newPost);
         }else{
+            newPost.setAuthor(user);
             serv.addPost(newPost);
         }
         newPost=null;
@@ -99,6 +118,38 @@ public class BlogControler implements Serializable {
         if(this.newTag==null)
             this.newTag = new Tag();
         this.newTag = newTag;
+    }
+        public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    public UserAccount getNewUser() {
+        if(this.newUser==null)
+            this.newUser = new UserAccount();
+        return newUser;
+    }
+
+    public void setNewUser(UserAccount newUser) {
+        if(this.newUser==null)
+            this.newUser = new UserAccount();
+        this.newUser = newUser;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public UserAccount getUser() {
+        return user;
     }
     //</editor-fold>
 }

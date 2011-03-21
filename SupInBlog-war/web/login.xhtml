@@ -8,9 +8,9 @@
     <ui:define name="content">
         <formset><legend>Login</legend>
             <table class="form">
-                <tr><th>Pseudonyme:</th><td><h:inputText required="true" value="#{identityControler.name}" /></td></tr>
-                <tr><th>Mot de passe:</th><td><h:inputSecret required="true" value="#{identityControler.password}" /></td></tr>
-                <tr><td></td><td><h:commandButton value="Log In" action="#{identityControler.auth}" /></td></tr>
+                <tr><th>Pseudonyme:</th><td><h:inputText required="true" value="#{blogControler.name}" /></td></tr>
+                <tr><th>Mot de passe:</th><td><h:inputSecret required="true" value="#{blogControler.password}" /></td></tr>
+                <tr><td></td><td><h:commandButton value="Log In" action="#{blogControler.auth}" /></td></tr>
             </table>
         </formset>
     </ui:define>
