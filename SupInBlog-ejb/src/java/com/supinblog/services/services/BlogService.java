@@ -9,6 +9,7 @@ import com.supinblog.services.entities.Comment;
 import com.supinblog.services.entities.Post;
 import com.supinblog.services.entities.Tag;
 import com.supinblog.services.entities.UserAccount;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -55,6 +56,8 @@ public class BlogService implements BlogServiceLocal {
 
     @Override
     public void addPost(Post newPost) {
+        newPost.setCreationDate(new Date());
+        newPost.setModificationDate(new Date());
         entities.persist(newPost);
     }
     

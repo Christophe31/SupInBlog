@@ -90,9 +90,6 @@ public class BlogControler implements Serializable {
         if(newPost==null)
         {
             newPost = new Post();
-            Date now = new Date();
-            newPost.setModificationDate(now);
-            newPost.setCreationDate(now);
         }
         return newPost;
     }
@@ -101,9 +98,6 @@ public class BlogControler implements Serializable {
         if(this.newPost==null)
         {
             this.newPost = new Post();
-            Date now = new Date();
-            this.newPost.setModificationDate(now);
-            this.newPost.setCreationDate(now);
         }
         this.newPost = newPost;
     }
