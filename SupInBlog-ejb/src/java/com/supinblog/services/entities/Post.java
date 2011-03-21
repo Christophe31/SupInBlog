@@ -26,7 +26,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @NamedQueries({
-@NamedQuery(name="Post.all",query="SELECT p FROM Post AS p ORDER BY p.creationDate"),
+@NamedQuery(name="Post.all",query="SELECT p FROM Post AS p ORDER BY p.creationDate DESC"),
 })
 @Table(name="POSTS")
 public class Post implements Serializable {
@@ -41,9 +41,9 @@ public class Post implements Serializable {
     
     private String title;
     private String content;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date creationDate;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date modificationDate;
     
     @ManyToOne

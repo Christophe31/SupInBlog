@@ -28,9 +28,9 @@ public class Comment implements Serializable {
     private Long id;
     
     private String content;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date creationDate;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date modificationDate;
     
     @ManyToOne

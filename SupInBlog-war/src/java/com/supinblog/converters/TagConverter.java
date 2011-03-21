@@ -30,13 +30,11 @@ public class TagConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        
-        return value == null || "".equals(value) ? 
-                null: 
-                ((BlogServiceLocal) context.getApplication()
+        BlogServiceLocal b = ((BlogServiceLocal) context.getApplication()
                     .evaluateExpressionGet(FacesContext.getCurrentInstance(), 
-                                            "#{blogControler.serv}", BlogServiceLocal.class))
-                .getTag(Integer.parseInt(value));
+                                            "#{blogControler.serv}", BlogServiceLocal.class));
+        return value == null || "".equals(value) ? 
+                null: b.getTag(Integer.parseInt(value));
     }
 
     @Override

@@ -56,8 +56,9 @@ public class BlogService implements BlogServiceLocal {
 
     @Override
     public void addPost(Post newPost) {
-        newPost.setCreationDate(new Date());
-        newPost.setModificationDate(new Date());
+        Date now = new Date();
+        newPost.setCreationDate(now);
+        newPost.setModificationDate(now);
         entities.persist(newPost);
     }
     
