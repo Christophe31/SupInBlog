@@ -16,6 +16,7 @@
 		<h1><a href="/">SupInBlog</a></h1><br/>
 		<h2>Le blog de l'info<c:if test="#{identityControler.user!=null}">, lue par <h:outputText value="#{identityControler.user.userName}"/></c:if></h2>
         </div>
+        <h:form>
         <div id="nav">
 	    <ul>
                 <li><a href="index.xhtml" class="selected" title="home page">home</a></li>
@@ -26,9 +27,9 @@
                         <li><h:link value="Register" outcome="register" title=""/></li>
                     </c:when>
                     <c:otherwise>
-                        <li><h:link value="Add Post" outcome="blog" title="add post page"/></li>
-                        <li><h:link value="Add Tag" outcome="blog" title="add tag page"/></li>
-                        <li><h:link value="Logout" outcome="logout" title="logout page"/></li>
+                        <li><h:link value="Add Post" outcome="newPost" title="add post page"/></li>
+                        <li><h:link value="Add Tag" outcome="newTag" title="add tag page"/></li>
+                        <li><h:commandLink value="Logout" action="#{identityControler.resetUser}" title="logout page"/></li>
                     </c:otherwise>
                 </c:choose>
             </ul>
@@ -46,12 +47,12 @@
             </div>
             <div class="page-wrap">
                 <div class="page">
-                <h:form>
+                
                     <ui:insert name="content">
                         <h1>Anything is possible at zombocom.</h1>
                         <h1>Hello <h:outputText value="#{identityControler.user.userName}"/></h1>
                     </ui:insert>
-                </h:form>
+                
                 </div>
                 <div class="sidebar">
                 <ui:insert name="sidebar">
@@ -67,6 +68,7 @@
                 <div class="clear"></div>
             </div>
         </div>
+        </h:form>
         <div id="footer"><p>Based on <a href="http://github.com/christophe31/SupInBlog/">Supinblog</a> | Design: <a href="http://www.spyka.net">spyka webmaster</a></p></div>
     </div>
     </div>

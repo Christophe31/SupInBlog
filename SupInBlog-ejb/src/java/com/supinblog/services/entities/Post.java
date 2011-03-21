@@ -30,6 +30,10 @@ import javax.persistence.Temporal;
 })
 @Table(name="POSTS")
 public class Post implements Serializable {
+
+    public Post() {
+    }
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

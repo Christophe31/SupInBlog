@@ -14,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -21,6 +23,11 @@ import javax.persistence.Table;
  * @author popi
  */
 @Entity
+@NamedQueries({
+@NamedQuery(name="Tag.all",query="SELECT t FROM Tag AS t"),
+@NamedQuery(name="Tag.withName",query="SELECT t FROM Tag AS t WHERE t.name = :name"),
+@NamedQuery(name="Tag.withId",query="SELECT t FROM Tag AS t WHERE t.id = :id"),
+})
 @Table(name="CATEGORIES")
 public class Tag implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -37,7 +44,7 @@ public class Tag implements Serializable {
     
     @Override
     public String toString() {
-        return "com.supinblog.services.entities.Tag[ id=" + id + " ]";
+        return name;
     }
     
 // <editor-fold defaultstate="collapsed" desc="Generated, getters, setters">

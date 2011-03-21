@@ -49,10 +49,45 @@ public class BlogService implements BlogServiceLocal {
     }
 
     @Override
+    public void addTag(Tag newTag) {
+        entities.persist(newTag);
+    }
+
+    @Override
+    public void addPost(Post newPost) {
+        entities.persist(newPost);
+    }
+    
+    @Override
     public List<Post> getPosts() {
         return (List<Post>)entities.createNamedQuery("Post.all").getResultList();
     }
 
+    @Override
+    public List<Tag> getTags() {
+        return (List<Tag>)entities.createNamedQuery("Tag.all").getResultList();
+    }
 
- 
+    @Override
+    public void updatePost(Post post) {
+        entities.merge(post);
+    }
+    @Override
+    public void updateTag(Tag tag) {
+        entities.merge(tag);
+    }
+
+    @Override
+    public Tag getTag(String name) {
+        return (Tag) entities.createNamedQuery("Tag.withName").setParameter("name", name).getSingleResult();
+    }
+
+    @Override
+    public Tag getTag(int id) {
+        try{
+            return (Tag) entities.createNamedQuery("Tag.withId").setParameter("id", id).getSingleResult();
+        }catch(NoResultException e) {
+            return null;}
+    }
+    
 }

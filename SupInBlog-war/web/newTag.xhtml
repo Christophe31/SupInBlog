@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"      
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="master.xhtml">
+    <ui:define name="title">Home</ui:define>
+    <ui:define name="description">Cette page est la page d'acceil, le sujet n'en a pour l'instant pas défini donc je fait avec ça.</ui:define>
+    <ui:define name="content">
+        <table>
+            <tr>
+                <th>Nom</th>
+                <td><h:inputText value="#{blogControler.newTag.name}"/> </td>
+            </tr>
+            <tr>
+                <th>Descrition</th>
+                <td><h:inputTextarea value="#{blogControler.newTag.description}"/> </td>
+            </tr>
+             <tr>
+                <tr></tr>
+                <td><h:commandButton value="Valider" action="#{blogControler.saveTag}" /> </td>
+            </tr>
+        </table>
+    </ui:define>
+    <ui:define name="sidebar">
+        <h4>Pas de compte?</h4>
+        <ul><li>
+        <h:link value="Register" outcome="register"/>
+        </li></ul>
+    </ui:define>
+</ui:composition>

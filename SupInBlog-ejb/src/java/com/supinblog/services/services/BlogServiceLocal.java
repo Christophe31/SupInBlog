@@ -23,6 +23,13 @@ public interface BlogServiceLocal {
     public UserAccount getAuthenticatedUser(String name, String password);
     public List<Comment> getPostComments(long postId);
     public List<Post> getPosts();
-
+    public List<Tag> getTags();
     public void addUser(UserAccount newUser);
+    public void addTag(Tag newTag);
+    public void addPost(Post newPost);
+    public void updatePost(Post post);
+    public void updateTag(Tag tag);
+    public Tag getTag(String name);
+    public Tag getTag(int id);
+
 }

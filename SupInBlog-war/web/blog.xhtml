@@ -10,7 +10,10 @@
         <ui:repeat value="#{blogControler.allPosts}" var="post">
             <div>
                 <h1><h:outputText value="#{post.title}" /></h1>
-                <h5><h:outputText value="#{post.creationDate}" /></h5>
+                <h5><h:outputText value="#{post.creationDate}" /> par <h:outputText value="#{post.author.userName}" /></h5>
+                <c:if test="#{post.creationDate != post.modificationDate}">
+                    <h5><h:outputText value="#{post.modificationDate}" /> </h5>
+                </c:if>
                 <p><h:outputText value="#{post.content}"/></p>
             </div>
         </ui:repeat>

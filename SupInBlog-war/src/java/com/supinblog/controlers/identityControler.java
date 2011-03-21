@@ -26,9 +26,9 @@ public class identityControler implements Serializable{
     private UserAccount user;    // curent User if auth.
     private UserAccount newUser; // tmp User used to register.
     
-    public String getResetUser(){
+    public String resetUser(){
         this.user=null;
-        return "vous avez été déconnecté";
+        return "index";
     }
 
     
