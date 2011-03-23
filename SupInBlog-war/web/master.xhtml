@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"      
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
         <title><ui:insert name="title">SupInBlog</ui:insert></title>
         <ui:insert name="extra_meta" />
@@ -14,7 +15,7 @@
     <div id="container">
         <div id="header">
 		<h1><a href="/">SupInBlog</a></h1><br/>
-		<h2>Le blog de l'info<c:if test="#{blogControler.user!=null}">, lue par <h:outputText value="#{blogControler.user.userName}"/></c:if></h2>
+		<h2>Le blog de l'info<c:if test="#{blogControler.user!=null}">, lu par <h:outputText value="#{blogControler.user.userName}"/></c:if></h2>
         </div>
         <h:form>
         <div id="nav">

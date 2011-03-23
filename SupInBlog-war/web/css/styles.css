@@ -312,3 +312,15 @@ code {
 *:focus {
 	outline:none;
 }
+
+/* 
+    SupInBlog Additions:
+*/
+.centred{
+    height:640px;
+    width:
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
+    
+}

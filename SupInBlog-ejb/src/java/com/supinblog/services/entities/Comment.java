@@ -38,11 +38,6 @@ public class Comment implements Serializable {
     @ManyToOne
     private Post post;
     
-    @Override
-    public String toString() {
-        return "com.supinblog.services.entities.Comment[ id=" + id + " ]";
-    }
-    
 // <editor-fold defaultstate="collapsed" desc="Generated, getters, setters"> 
 
     public Long getId() {
@@ -112,7 +107,12 @@ public class Comment implements Serializable {
     public void setPost(Post post) {
         this.post = post;
     }
-    
+
+    @Override
+    public String toString() {
+        return "com.supinblog.services.entities.Comment[ id=" + id + " ]";
+    }
+
 // </editor-fold>
 
 }

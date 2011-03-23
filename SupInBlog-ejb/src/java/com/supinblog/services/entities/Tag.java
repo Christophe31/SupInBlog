@@ -38,7 +38,7 @@ public class Tag implements Serializable {
     private String name;
     private String description;
     
-    @ManyToMany(cascade={CascadeType.ALL})
+    @ManyToMany(mappedBy = "tags",cascade={CascadeType.ALL})
     @JoinTable(name="POSTS_CATEGORIES")
     private List<Post> posts;
     

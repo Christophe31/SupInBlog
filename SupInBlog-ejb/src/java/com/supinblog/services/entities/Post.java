@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -50,7 +51,8 @@ public class Post implements Serializable {
     private UserAccount author;
     @OneToMany(mappedBy = "post")
     private List<Comment> comments;
-    @ManyToMany(mappedBy = "posts")
+    @ManyToMany()
+    @JoinTable(name="POSTS_CATEGORIES")
     private List<Tag> tags;
     
     @Override
