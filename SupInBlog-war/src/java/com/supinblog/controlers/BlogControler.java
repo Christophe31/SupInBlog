@@ -10,7 +10,6 @@ import com.supinblog.services.entities.Tag;
 import com.supinblog.services.entities.UserAccount;
 import com.supinblog.services.services.BlogServiceLocal;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
