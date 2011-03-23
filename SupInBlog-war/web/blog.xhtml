@@ -14,14 +14,17 @@
                 <c:if test="#{post.creationDate != post.modificationDate}">
                     <h5><h:outputText value="#{post.modificationDate}" /> </h5>
                 </c:if>
+                <h5><ui:repeat value="#{post.tags}" var="tag"><h:outputText value="#{tag.name}"/>,</ui:repeat></h5>
                 <p><h:outputText value="#{post.content}"/></p>
             </div>
         </ui:repeat>
     </ui:define>
     <ui:define name="sidebar">
-        <h4>Pas de compte?</h4>
+        <h4>Tags</h4>
         <ul><li>
-        <h:link value="Register" outcome="register"/>
+            <ui:repeat value="#{blogControler.allTags}" var="tag">
+                <h:link value="#{tag.name}" outcome="register"/>
+            </ui:repeat>
         </li></ul>
     </ui:define>
 </ui:composition>
