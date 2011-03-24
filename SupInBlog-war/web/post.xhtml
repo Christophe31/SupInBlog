@@ -4,16 +4,18 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 template="master.xhtml"
                 xmlns:c="http://java.sun.com/jsp/jstl/core">
-    <f:metadata><f:viewParam name="id" value="#{id}"</f:metadata>
     <ui:define name="title">Le Blog</ui:define>
     <ui:define name="description">Cette page liste l'ensemble des posts du blog, elle est donc la page essentielle, grace à cette page, il est possible de lire le contenu du blog en temps réel et d'avoir les liens de modification.</ui:define>
     <ui:define name="content">
+        
         <div>
+            <c:set var="post" value="${blogControler.askedPost}" />
             <h1><h:outputText value="#{post.title}" /></h1>
             <h5><h:outputText value="#{post.creationDate}" /> par <h:outputText value="#{post.author.userName}" /></h5>
-            <c:if test="#{post.creationDate != post.modificationDate}">
+            <c:if test="#{post.creationDate != blogControler.askedPost.modificationDate}">
                 <h5><h:outputText value="#{post.modificationDate}" /> </h5>
             </c:if>
+            <h5><ui:repeat value="#{post.tags}" var="tag"><h:outputText value="#{tag.name}"/>,</ui:repeat></h5>
             <p><h:outputText value="#{post.content}"/></p>
         </div>
     </ui:define>

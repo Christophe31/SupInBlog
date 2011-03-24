@@ -5,7 +5,6 @@
 
 package com.supinblog.services.services;
 
-import com.supinblog.services.entities.Comment;
 import com.supinblog.services.entities.Post;
 import com.supinblog.services.entities.Tag;
 import com.supinblog.services.entities.UserAccount;
@@ -21,7 +20,6 @@ import javax.ejb.Local;
 @Local
 public interface BlogServiceLocal {
     public UserAccount getAuthenticatedUser(String name, String password);
-    public List<Comment> getPostComments(long postId);
     public List<Post> getPosts();
     public List<Tag> getTags();
     public void addUser(UserAccount newUser);
@@ -30,6 +28,7 @@ public interface BlogServiceLocal {
     public void updatePost(Post post);
     public void updateTag(Tag tag);
     public Tag getTag(String name);
-    public Tag getTag(int id);
+    public Tag getTag(long id);
+    public Post getPost(long id);
 
 }

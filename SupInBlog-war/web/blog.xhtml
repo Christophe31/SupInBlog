@@ -14,8 +14,17 @@
                 <c:if test="#{post.creationDate != post.modificationDate}">
                     <h5><h:outputText value="#{post.modificationDate}" /> </h5>
                 </c:if>
-                <h5><ui:repeat value="#{post.tags}" var="tag"><h:outputText value="#{tag.name}"/>,</ui:repeat></h5>
+                <h5><ui:repeat value="#{post.tags}" var="tag">
+                        <h:link value="#{tag.name}" outcome="blog">
+                            <f:param name="tag" value="#{tag.id}"/>
+                            <f:param name="tag_name" value="#{tag.name}"/>
+                        </h:link>,
+                    </ui:repeat></h5>
                 <p><h:outputText value="#{post.content}"/></p>
+                <h:link value="read more..." outcome="post">
+                    <f:param name="post_id" value="#{post.id}"/>
+                    <f:param name="post_title" value="#{post.title}"/>
+                </h:link>
             </div>
         </ui:repeat>
     </ui:define>
@@ -23,7 +32,10 @@
         <h4>Tags</h4>
         <ul><li>
             <ui:repeat value="#{blogControler.allTags}" var="tag">
-                <h:link value="#{tag.name}" outcome="register"/>
+                <h:link value="#{tag.name}" outcome="blog">
+                    <f:param name="tag_name" value="#{tag.name}"/>
+                    <f:param name="tag" value="#{tag.id}"/>
+                </h:link>
             </ui:repeat>
         </li></ul>
     </ui:define>

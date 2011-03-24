@@ -11,9 +11,11 @@ import com.supinblog.services.entities.UserAccount;
 import com.supinblog.services.services.BlogServiceLocal;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
@@ -26,7 +28,7 @@ import javax.inject.Named;
 public class BlogControler implements Serializable {
     @EJB
     private BlogServiceLocal serv;// link to entities service.
-
+    
     private String name;         // name used to auth
     private String password;     // password used to auth
     private UserAccount user;    // curent User if auth.
@@ -48,12 +50,22 @@ public class BlogControler implements Serializable {
         return "login";
     }
 
+    public Post getAskedPost(){
+        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        return serv.getPost(Long.parseLong(params.get("post_id")));
+    }
+    
     public BlogServiceLocal getServ() {
         return serv;
     }
     
     public List<Post> getAllPosts() {
-        return serv.getPosts();
+        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        String tag_id = params.get("tag");
+        if (tag_id == null){
+            return serv.getPosts();
+        }
+        return serv.getTag(Long.parseLong(tag_id)).getPosts();
     }
     
     public List<Tag> getAllTags() {

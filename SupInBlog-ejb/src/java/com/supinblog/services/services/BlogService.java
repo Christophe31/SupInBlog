@@ -36,11 +36,6 @@ public class BlogService implements BlogServiceLocal {
             return null;}
     }
     
-    @Override
-    public List<Comment> getPostComments(long postId) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-    
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
@@ -87,11 +82,15 @@ public class BlogService implements BlogServiceLocal {
     }
 
     @Override
-    public Tag getTag(int id) {
+    public Tag getTag(long id) {
         try{
             return (Tag) entities.createNamedQuery("Tag.withId").setParameter("id", id).getSingleResult();
         }catch(NoResultException e) {
             return null;}
     }
-    
+
+    @Override
+    public Post getPost(long id) {
+        return (Post) entities.find(Post.class, id);
+    }
 }
