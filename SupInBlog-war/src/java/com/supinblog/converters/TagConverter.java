@@ -39,8 +39,6 @@ public class TagConverter implements Converter {
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-        System.out.println("tostring");
-        System.out.println(value);
         return ((Tag)value).getId().toString();
     }
     
