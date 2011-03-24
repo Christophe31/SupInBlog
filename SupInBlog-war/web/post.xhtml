@@ -24,8 +24,8 @@
                     <c:if test="#{comment.creationDate != comment.modificationDate}"><h5><h:outputText value="#{comment.creationDate}"/></h5></c:if>
                     <p><h:outputText value="#{comment.content}"/></p>
                 </ui:repeat>
-                <h:inputTextarea rendered="#{! blogControler.user == null}" value="#{blogControler.newComment.content}" /> <br />
-                <h:commandButton rendered="#{! blogControler.user == null}" value="Poster un commentaire" action="#{blogControler.saveComment}"/>
+                <h:inputTextarea rendered="#{blogControler.user != null}" value="#{blogControler.newComment.content}" /> <br />
+                <h:commandButton rendered="#{blogControler.user != null}" value="Poster un commentaire" action="#{blogControler.saveComment}"/>
             </div>
         </div>
     </ui:define>

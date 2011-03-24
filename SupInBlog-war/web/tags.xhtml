@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"      
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="master.xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <ui:define name="title">Home</ui:define>
+    <ui:define name="description">Cette page est la page d'acceil, le sujet n'en a pour l'instant pas défini donc je fait avec ça.</ui:define>
+    <ui:define name="content">
+        <table>
+        <ui:repeat value="#{blogControler.allTags}" var="tag">
+            <tr>
+                <th><h:link value="#{tag.name}" outcome="blog">
+                    <f:param name="tag" value="#{tag.id}"/>
+                    <f:param name="tag_name" value="#{tag.name}"/>
+                </h:link>
+                </th>
+                <td><p>#{tag.description}</p></td>
+            </tr>
+        </ui:repeat>
+            </table>
+    </ui:define>
+</ui:composition>

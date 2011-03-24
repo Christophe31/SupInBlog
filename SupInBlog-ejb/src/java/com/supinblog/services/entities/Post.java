@@ -59,7 +59,7 @@ public class Post implements Serializable {
     public String toString() {
         return "com.supinblog.services.entities.Post[ id=" + id + " ]";
     }
-
+    
 // <editor-fold defaultstate="collapsed" desc="Generated, getters, setters">
     public Long getId() {
         return id;
