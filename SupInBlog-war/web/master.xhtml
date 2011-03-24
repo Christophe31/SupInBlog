@@ -57,6 +57,14 @@
                 </div>
                 <div class="sidebar">
                 <ui:insert name="sidebar">
+                    <c:if test="#{blogControler.user == null}">
+                    <h4>Pas connecté?</h4>
+                        <ul><li>
+                        <h:link value="Register" outcome="register"/>
+                        </li><li>
+                        <h:link value="Login" outcome="login"/>
+                        </li></ul>
+                    </c:if>
                 </ui:insert>
                 <h4>Links</h4>
                 <ul>

@@ -5,6 +5,7 @@
 
 package com.supinblog.services.services;
 
+import com.supinblog.services.entities.Comment;
 import com.supinblog.services.entities.Post;
 import com.supinblog.services.entities.Tag;
 import com.supinblog.services.entities.UserAccount;
@@ -30,5 +31,6 @@ public interface BlogServiceLocal {
     public Tag getTag(String name);
     public Tag getTag(long id);
     public Post getPost(long id);
-
+    public void addComment(Comment newComment);
+    public void updateComment(Comment comment);
 }

@@ -4,25 +4,29 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 template="master.xhtml"
                 xmlns:c="http://java.sun.com/jsp/jstl/core">
-    <ui:define name="title">Le Blog</ui:define>
-    <ui:define name="description">Cette page liste l'ensemble des posts du blog, elle est donc la page essentielle, grace à cette page, il est possible de lire le contenu du blog en temps réel et d'avoir les liens de modification.</ui:define>
+    <ui:define name="extra_meta"><c:set var="c_post" value="${blogControler.askedPost}" /></ui:define>
+    <ui:define name="title">Article :<h:outputText value="#{c_post.title}" /></ui:define>
+    <ui:define name="description">Cette page affiche les détails du post et permet de gérer les commentaires.</ui:define>
     <ui:define name="content">
         
         <div>
-            <c:set var="post" value="${blogControler.askedPost}" />
-            <h1><h:outputText value="#{post.title}" /></h1>
-            <h5><h:outputText value="#{post.creationDate}" /> par <h:outputText value="#{post.author.userName}" /></h5>
-            <c:if test="#{post.creationDate != blogControler.askedPost.modificationDate}">
+            <h1><h:outputText value="#{c_post.title}" /></h1>
+            <h5><h:outputText value="#{c_post.creationDate}" /> par <h:outputText value="#{c_post.author.userName}" /></h5>
+            <c:if test="#{c_post.creationDate != c_post.modificationDate}">
                 <h5><h:outputText value="#{post.modificationDate}" /> </h5>
             </c:if>
-            <h5><ui:repeat value="#{post.tags}" var="tag"><h:outputText value="#{tag.name}"/>,</ui:repeat></h5>
-            <p><h:outputText value="#{post.content}"/></p>
+            <h5><ui:repeat value="#{c_post.tags}" var="tag"><h:outputText value="#{tag.name}"/>,</ui:repeat></h5>
+            <p><h:outputText value="#{c_post.content}"/></p>
+            <div>
+                <ui:repeat value="#{blogControler.askedPost.comments}" var="comment">
+                    <h4>Message de <h:outputText value="#{comment.author.userName}" /></h4>
+                    <h5><h:outputText value="#{comment.creationDate}"/></h5>
+                    <c:if test="#{comment.creationDate != comment.modificationDate}"><h5><h:outputText value="#{comment.creationDate}"/></h5></c:if>
+                    <p><h:outputText value="#{comment.content}"/></p>
+                </ui:repeat>
+                <h:inputTextarea rendered="#{! blogControler.user == null}" value="#{blogControler.newComment.content}" /> <br />
+                <h:commandButton rendered="#{! blogControler.user == null}" value="Poster un commentaire" action="#{blogControler.saveComment}"/>
+            </div>
         </div>
-    </ui:define>
-    <ui:define name="sidebar">
-        <h4>Pas de compte?</h4>
-        <ul><li>
-        <h:link value="Register" outcome="register"/>
-        </li></ul>
     </ui:define>
 </ui:composition>

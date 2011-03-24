@@ -93,4 +93,17 @@ public class BlogService implements BlogServiceLocal {
     public Post getPost(long id) {
         return (Post) entities.find(Post.class, id);
     }
+
+    @Override
+    public void addComment(Comment newComment) {
+        Date now = new Date();
+        newComment.setCreationDate(now);
+        newComment.setModificationDate(now);
+        entities.persist(newComment);
+    }
+
+    @Override
+    public void updateComment(Comment comment) {
+        entities.merge(comment);
+    }
 }

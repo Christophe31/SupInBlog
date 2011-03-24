@@ -7,6 +7,7 @@
     <ui:define name="title">Add Post</ui:define>
     <ui:define name="description">Cette page est la page d'ajout de posts, elle permet aux nombreux bloggueurs d'ajouter du contenu sur le site.</ui:define>
     <ui:define name="content">
+        <c:if test="#{blogControler.user != null}">
         <table>
             <tr>
                 <th>Titre:</th>
@@ -29,5 +30,9 @@
                 <td><h:commandButton value="Poster l'article" action="#{blogControler.savePost}"/></td>
             </tr>
         </table>
+        </c:if>
+        <c:if test="#{blogControler.user == null}">
+            <h1>Permission invalides</h1>
+        </c:if>
     </ui:define>
 </ui:composition>

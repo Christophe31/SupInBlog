@@ -5,6 +5,7 @@
 
 package com.supinblog.controlers;
 
+import com.supinblog.services.entities.Comment;
 import com.supinblog.services.entities.Post;
 import com.supinblog.services.entities.Tag;
 import com.supinblog.services.entities.UserAccount;
@@ -35,6 +36,8 @@ public class BlogControler implements Serializable {
     private UserAccount newUser; // tmp User used to register.
     private Tag newTag;
     private Post newPost;
+    private Post lastPost;
+    private Comment newComment;
     
     public String resetUser(){
         this.user=null;
@@ -45,6 +48,7 @@ public class BlogControler implements Serializable {
         user= serv.getAuthenticatedUser(name, password);
         return user==null?"login":"index";
     }
+    
     public String addUser(){
         serv.addUser(this.newUser);
         return "login";
@@ -52,11 +56,15 @@ public class BlogControler implements Serializable {
 
     public Post getAskedPost(){
         Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-        return serv.getPost(Long.parseLong(params.get("post_id")));
-    }
-    
-    public BlogServiceLocal getServ() {
-        return serv;
+        String post_id = params.get("post_id");
+        if(post_id == null){
+            if(lastPost == null){
+                return new Post();
+            }
+            return lastPost;
+        }
+        lastPost = serv.getPost(Long.parseLong(post_id));
+        return lastPost;
     }
     
     public List<Post> getAllPosts() {
@@ -82,6 +90,20 @@ public class BlogControler implements Serializable {
         newPost=null;
         return "blog";
     }
+    
+    public String saveComment(){
+        if (newComment.getId() != null && newComment.getId() != 0) {
+           serv.updateComment(newComment);
+        }else{
+            newComment.setAuthor(user);
+            newComment.setPost(lastPost);
+            serv.addComment(newComment);
+        }
+        for(Comment c : lastPost.getComments()){System.out.println(c.getContent());}
+        newComment=null;
+        return "blog";
+    }
+    
     public String saveTag(){
         if (newTag.getId() != null && newTag.getId() != 0) {
            serv.updateTag(newTag);
@@ -91,12 +113,29 @@ public class BlogControler implements Serializable {
         this.newTag=null;
         return "blog";
     }
-    
+
+    // <editor-fold defaultstate="collapsed" desc="Generated, getters, setters">
     /** Creates a new instance of BlogControler */
     public BlogControler() {
     }
+        
+    public BlogServiceLocal getServ() {
+        return serv;
+    }
+    public Comment getNewComment() {
+        if(newComment == null){
+            newComment = new Comment();
+        }
+        return newComment;
+    }
+
+    public void setNewComment(Comment newComment) {
+        if(newComment == null){
+            newComment = new Comment();
+        }
+        this.newComment = newComment;
+    }
     
-    // <editor-fold defaultstate="collapsed" desc="Generated, getters, setters">
     public Post getNewPost() {
         if(newPost==null)
         {

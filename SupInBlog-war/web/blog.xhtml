@@ -33,8 +33,8 @@
         <ul><li>
             <ui:repeat value="#{blogControler.allTags}" var="tag">
                 <h:link value="#{tag.name}" outcome="blog">
-                    <f:param name="tag_name" value="#{tag.name}"/>
                     <f:param name="tag" value="#{tag.id}"/>
+                    <f:param name="tag_name" value="#{tag.name}"/>
                 </h:link>
             </ui:repeat>
         </li></ul>
